@@ -1,0 +1,16 @@
+div {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.selected.inline {
+    background-color: #ffe479;
+}
+
+.inline {
+    background-color: #fff7d5;
+}

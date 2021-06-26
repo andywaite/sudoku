@@ -1,0 +1,4 @@
+<div (click)="selectSquare()" [ngClass]="{'selected': board.isSelectedCell(cell), 'inline': board.isCellInHighlightedRowOrColumn(cell)}">
+    {{ cell.value }}
+</div>
+

@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+$background-color: #1B75FC;
+$text-color: #fff;
+
+html, body {
+    margin: 0;
+    color: $text-color;
+    background-color: $background-color;
+    font-family: 'Source Code Pro', monospace;
+    height: 100%;
+    transform-origin: center;
+}

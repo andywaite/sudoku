@@ -1,0 +1,7 @@
+<table class="board" *ngIf="board">
+    <tr class="row" *ngFor="let row of board.cells">
+        <td class="col" *ngFor="let cell of row">
+            <app-cell [cell]="cell" [board]="board"></app-cell>
+        </td>
+    </tr>
+</table>

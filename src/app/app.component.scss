@@ -1,0 +1,33 @@
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 19rem;
+    letter-spacing: -0.05em;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: rgba(255, 255, 255, 0.6);
+    transform-origin: center;
+}
+
+.app-container-outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.app-container-inner {
+    position: relative;
+    width: 960px;   
+}
+
+.game-container {
+    position: absolute;
+    left: 86px;
+    top: 0;
+    transform-origin: center;
+    transform-style: preserve-3d;
+}
