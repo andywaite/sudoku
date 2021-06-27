@@ -1,4 +1,4 @@
-<table class="board" *ngIf="board">
+<table class="board" *ngIf="board" [ngClass]="{'error': board.isConflicted}">
     <tr class="row" *ngFor="let row of board.cells">
         <td class="col" *ngFor="let cell of row">
             <app-cell [cell]="cell" [board]="board"></app-cell>

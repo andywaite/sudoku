@@ -4,6 +4,7 @@ export class Board {
     cells: Array<Array<Cell>> = []
     selectedX: number|null = null;
     selectedY: number|null = null;
+    isConflicted: boolean = false;
 
     isSelectedCell(subject: Cell): boolean {
         if (this.selectedX === null || this.selectedY === null) {
@@ -19,6 +20,8 @@ export class Board {
         }
 
         this.cells[this.selectedX][this.selectedY].value = null;
+
+        this.isConflicted = false;
     }
 
     play(guess: number): void {
@@ -27,6 +30,10 @@ export class Board {
         }
 
         this.cells[this.selectedX][this.selectedY].value = guess;
+
+        if (this.isCellConflicted(this.cells[this.selectedX][this.selectedY])) {
+            this.isConflicted = true;
+        }
     }
 
 
@@ -87,7 +94,7 @@ export class Board {
         return peers;
     }
 
-    isConflicted(subject: Cell): boolean {
+    isCellConflicted(subject: Cell): boolean {
         if (subject.value === null) {
             return false;
         }

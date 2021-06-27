@@ -1,4 +1,4 @@
-<div (click)="selectSquare()" [ngClass]="{'selected': board.isSelectedCell(cell), 'inline': board.isCellInHighlightedRowOrColumn(cell), 'preset': cell.preset, 'conflict': board.isConflicted(cell)}">
+<div (click)="selectSquare()" [ngClass]="{'selected': board.isSelectedCell(cell), 'inline': board.isCellInHighlightedRowOrColumn(cell), 'preset': cell.preset, 'conflict': board.isCellConflicted(cell)}">
     {{ cell.value }}
 </div>
 
