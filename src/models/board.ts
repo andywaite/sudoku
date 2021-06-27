@@ -5,6 +5,7 @@ export class Board {
     selectedX: number|null = null;
     selectedY: number|null = null;
     isConflicted: boolean = false;
+    isEnded: boolean = false;
 
     isSelectedCell(subject: Cell): boolean {
         if (this.selectedX === null || this.selectedY === null) {
@@ -14,8 +15,20 @@ export class Board {
         return this.cells[this.selectedX][this.selectedY] === subject;
     }
 
+    checkEndState(): void {
+        for (const row of this.cells) {
+            for (const cell of row) {
+                if (cell.value === null || cell.conflict) {
+                    return;
+                }
+            }
+        }
+
+        this.isEnded = true;
+    }
+
     clearSelectedCell(): void {
-        if (this.selectedX === null || this.selectedY === null) {
+        if (this.selectedX === null || this.selectedY === null || this.isEnded) {
             return;
         }
 
@@ -25,7 +38,7 @@ export class Board {
     }
 
     moveSelected(xDelta: number = 0, yDelta: number = 0) {
-        if (this.selectedX == null || this.selectedY === null) {
+        if (this.selectedX == null || this.selectedY === null || this.isEnded) {
             return;
         }
 
@@ -36,7 +49,7 @@ export class Board {
         if (targetX < 0 || targetX > 8 || targetY < 0 || targetY > 8) {
             return;
         }
-        
+
         // Space is occupied, try skipping over
         if (this.cells[targetX][targetY].preset) {
 
@@ -75,6 +88,8 @@ export class Board {
         if (this.isCellConflicted(this.cells[this.selectedX][this.selectedY])) {
             this.isConflicted = true;
         }
+
+        this.checkEndState();
     }
 
 

@@ -13,6 +13,10 @@
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
 
+.board.won {
+    background: #D0FFE9;
+}
+
 tr {
     border-bottom: 1px solid #e5e5e5;
 

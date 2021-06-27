@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Board } from 'src/models/board';
 
 @Component({
   selector: 'app-timer',
@@ -14,10 +15,18 @@ export class TimerComponent implements OnInit {
   minutes: number = 0;
   hours: number = 0;
 
+  @Input()
+  board: Board;
+
   ngOnInit(): void {
     this.start = (Date.now() / 1000);
 
-    setInterval(() => {
+    const interval = setInterval(() => {
+
+      if (this.board.isEnded) {
+        clearInterval(interval);
+      }
+
       const diff = (Date.now() / 1000) - this.start;
       this.hours = Math.floor(diff / 3600);
       this.minutes = Math.floor((diff % 3600) / 60);

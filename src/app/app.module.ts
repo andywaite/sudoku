@@ -9,7 +9,7 @@ import { CellComponent } from './cell/cell.component';
 import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     GameComponent,
     CellComponent,

@@ -4,4 +4,8 @@ p {
     color: #FFCB00;
     margin: 0;
     padding: 0;
+
+    &.ended {
+        color: #6affb9;
+    }
 }

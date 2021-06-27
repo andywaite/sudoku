@@ -21,10 +21,13 @@ div {
     background-color: #fff7d5;
 }
 
-.selected.conflict,
 .conflict {
-    background-color: #FFC199;
+    background-color: #ffdec7;
     color: #CC5000;
+}
+
+.selected.conflict {
+    background-color: #FFC199;
 }
 
 .preset {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { Board } from 'src/models/board';
 import { BoardLoader } from 'src/services/board-loader.service';
 
@@ -8,14 +8,16 @@ import { BoardLoader } from 'src/services/board-loader.service';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
+  constructor(
+    private boardLoader: BoardLoader
+  ) { }
 
-  constructor(private boardLoader: BoardLoader) { }
   board: Board;
 
   async ngOnInit(): Promise<void> {
     this.board = await this.boardLoader.loadBoard();
 
-    document.addEventListener('keydown', (e:KeyboardEvent) => {
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
       const guess = Number.parseInt(e.key);
 
       if (!Number.isInteger(guess)) {
@@ -30,7 +32,7 @@ export class GameComponent implements OnInit {
         if (e.key === 'ArrowRight' && this.board.selectedY !== null) {
           this.board.moveSelected(0, 1);
         }
-        
+
         if (e.key === 'ArrowUp' && this.board.selectedX !== null) {
           this.board.moveSelected(-1, 0);
         }
@@ -42,7 +44,7 @@ export class GameComponent implements OnInit {
 
         return;
       }
-  
+
       if (guess >= 1 && guess <= 9) {
         this.board.play(guess);
       }
