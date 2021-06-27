@@ -24,6 +24,47 @@ export class Board {
         this.isConflicted = false;
     }
 
+    moveSelected(xDelta: number = 0, yDelta: number = 0) {
+        if (this.selectedX == null || this.selectedY === null) {
+            return;
+        }
+
+        const targetX:number = this.selectedX + xDelta;
+        const targetY:number = this.selectedY + yDelta;
+
+        // Don't allow overflow
+        if (targetX < 0 || targetX > 8 || targetY < 0 || targetY > 8) {
+            return;
+        }
+        
+        // Space is occupied, try skipping over
+        if (this.cells[targetX][targetY].preset) {
+
+            if (xDelta < 0) {
+                xDelta -= 1;
+            }
+
+            if (xDelta > 0) {
+                xDelta += 1;
+            }
+
+            if (yDelta < 0) {
+                yDelta -= 1;
+            }
+
+            if (yDelta > 0) {
+                yDelta += 1;
+            }
+
+            this.moveSelected(xDelta, yDelta);
+            return;
+        }
+
+        this.selectedX = targetX;
+        this.selectedY = targetY;
+        return;
+    }
+
     play(guess: number): void {
         if (this.selectedX === null || this.selectedY === null) {
             return;

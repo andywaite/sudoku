@@ -22,7 +22,24 @@ export class GameComponent implements OnInit {
         if (e.key === 'Delete' || e.key === 'Backspace') {
           this.board.clearSelectedCell();
         }
+
+        if (e.key === 'ArrowLeft' && this.board.selectedY !== null) {
+          this.board.moveSelected(0, -1);
+        }
+
+        if (e.key === 'ArrowRight' && this.board.selectedY !== null) {
+          this.board.moveSelected(0, 1);
+        }
         
+        if (e.key === 'ArrowUp' && this.board.selectedX !== null) {
+          this.board.moveSelected(-1, 0);
+        }
+
+        if (e.key === 'ArrowDown' && this.board.selectedX !== null) {
+          this.board.moveSelected(1, 0);
+        }
+
+
         return;
       }
   
