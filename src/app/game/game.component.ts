@@ -14,6 +14,22 @@ export class GameComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.board = await this.boardLoader.loadBoard();
+
+    document.addEventListener('keydown', (e:KeyboardEvent) => {
+      const guess = Number.parseInt(e.key);
+
+      if (!Number.isInteger(guess)) {
+        if (e.key === 'Delete' || e.key === 'Backspace') {
+          this.board.clearSelectedCell();
+        }
+        
+        return;
+      }
+  
+      if (guess >= 1 && guess <= 9) {
+        this.board.play(guess);
+      }
+    });
   }
 
 }

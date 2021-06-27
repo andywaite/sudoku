@@ -18,7 +18,7 @@ export class BoardLoader {
       const row: Array<Cell> = [];
       for (const y in data[x]) {
         // @ts-ignore
-        const cell = new Cell(data[x][y])
+        const cell = new Cell(x, y, data[x][y])
         row.push(cell);
       }
 

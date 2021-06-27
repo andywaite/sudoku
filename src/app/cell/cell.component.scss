@@ -5,6 +5,12 @@ div {
     justify-content: center;
     width: 40px;
     height: 40px;
+    color: #024DBB;
+    cursor: pointer;
+}
+
+.preset {
+    color: #222;
 }
 
 .selected.inline {
@@ -13,4 +19,14 @@ div {
 
 .inline {
     background-color: #fff7d5;
+}
+
+.selected.conflict,
+.conflict {
+    background-color: #FFC199;
+    color: #CC5000;
+}
+
+.preset {
+    color: #222;
 }

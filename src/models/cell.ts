@@ -1,9 +1,14 @@
 export class Cell {
     value: number|null;
     preset: boolean = false;
+    conflict: boolean = false;
+    x: number;
+    y: number;
 
-    constructor(value: number|null) {
+    constructor(x: number, y: number, value: number|null) {
         this.value = value
+        this.x = x;
+        this.y = y;
 
         if (value !== null) {
             this.preset = true
